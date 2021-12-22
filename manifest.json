@@ -1,0 +1,13 @@
+{
+  "name": "PWA Website",
+  "short_name": "Qasim Sarwari",
+  "start_url": ".",
+  "background_color": "#eee",
+  "theme_color": "#197",
+  "display": "standalone",
+  "icons": [{
+    "src": "/logo.png",
+    "size": "225/225",
+    "type": "image/png"
+  }]
+}
