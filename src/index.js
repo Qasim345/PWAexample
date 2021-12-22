@@ -6,7 +6,6 @@ if ("serviceWorker" in navigator) {
     console.log("SW Registered filed");
     console.log(error);
   })
-}
 window.addEventListener('beforeinstallprompt', e => {
   console.log('beforeinstallprompt Event fired');
   e.preventDefault();
@@ -20,3 +19,4 @@ this.deferredPrompt.userChoice.then(choice => {
   console.log(choice);
 });
 this.deferredPrompt = null;
+}
