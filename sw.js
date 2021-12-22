@@ -1,10 +1,4 @@
-// Initialize deferredPrompt for use later to show browser install prompt.
-let deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // 
 self.addEventListener("install", e => {
   e.waitUntil(
     caches.open("static").then(cache => {
@@ -18,4 +12,23 @@ self.addEventListener("fetch", e => {
       return respons || fetch(e.request)
     })
   )
+});
+let defferedPrompt;
+const addbtn = document.querySelector('.btn');
+
+window.addEventListener('beforeinstallprompt', event => {
+    event.preventDefault();
+    defferedPrompt = event
+    addbtn.style.display = 'block';
+});
+
+addbtn.addEventListener('click', event => {
+    defferedPrompt.prompt();
+
+    defferedPrompt.userChoice.then(choice => {
+        if(choice.outcome === 'accepted'){
+            console.log('user accepted the prompt')
+        }
+        defferedPrompt = null;
+    })
 })
